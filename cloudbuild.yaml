@@ -13,7 +13,7 @@
 
 steps:
 - name: 'ubuntu'
-  args: ['echo', 'hello ${_SUB_VALUE} ${_SUB_PATH} ${_PATH}']
+  args: ['echo', 'hello ${_SUB_VALUE} ${_SUB_PATH} ${_FAVORITE_COLOR}']
 # substitutions:
 #     _SUB_VALUE: world
 # options:
