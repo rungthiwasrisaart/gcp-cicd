@@ -13,7 +13,7 @@
 
 steps:
 - name: 'ubuntu'
-  args: ['echo', 'hello ${_SUB_VALUE}']
+  args: ['echo', 'hello ${_SUB_VALUE} ${SUB_PATH}']
 substitutions:
     _SUB_VALUE: world
 options:
