@@ -5,7 +5,7 @@ build:
   - image: merchant/merchant-create-handle-eventstore
     context: ./../
     docker:
-      dockerfile: docker/node/Dockerfile
+      dockerfile: ./docker/node/Dockerfile
       buildArgs:
         root_src: skaffold-merchant/src/merchant-create-handle-eventstore
   googleCloudBuild:
