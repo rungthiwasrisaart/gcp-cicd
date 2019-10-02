@@ -1,0 +1,56 @@
+##################################################################################################
+# merchant-create-handle-eventstore service
+##################################################################################################
+apiVersion: v1
+kind: Service
+metadata:
+  name: merchant-create-handle-eventstore
+  namespace: merchant
+  labels:
+    app: merchant-create-handle-eventstore
+    service: merchant-create-handle-eventstore
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: merchant-create-handle-eventstore
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: merchantinfo-merchant-create-handle-eventstore
+  namespace: merchant
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: merchant-create-handle-eventstore-v1
+  namespace: merchant
+  labels:
+    app: merchant-create-handle-eventstore
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: merchant-create-handle-eventstore
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: merchant-create-handle-eventstore
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      serviceAccountName: merchantinfo-merchant-create-handle-eventstore
+      containers:
+      - name: merchant-create-handle-eventstore
+        image: merchant/merchant-create-handle-eventstore
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9080
+      imagePullSecrets:
+        - name: gcr-json-key
+---

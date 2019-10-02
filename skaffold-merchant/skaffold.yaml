@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1beta13
+kind: Config
+build:
+  artifacts:
+  - image: merchant/merchant-create-handle-eventstore
+    context: ./../
+    docker:
+      dockerfile: docker/node/Dockerfile
+      buildArgs:
+        root_src: skaffold-merchant/src/merchant-create-handle-eventstore
+  googleCloudBuild:
+    projectId: vertobase-dev
+deploy:
+  kubectl:
+    manifests:
+      - ./k8s/merchant-create-handle-eventstore.yaml
