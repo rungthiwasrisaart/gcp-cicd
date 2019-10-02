@@ -3,7 +3,7 @@ kind: Config
 build:
   artifacts:
   - image: merchant/merchant-create-handle-eventstore
-    context: ./
+    context: ./../
     docker:
       dockerfile: docker/node/Dockerfile
       buildArgs:
