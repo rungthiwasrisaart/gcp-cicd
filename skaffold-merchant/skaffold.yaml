@@ -13,4 +13,4 @@ build:
 deploy:
   kubectl:
     manifests:
-      - ./k8s/merchant-create-handle-eventstore.yaml
+      - ./skaffold-merchant/k8s/merchant-create-handle-eventstore.yaml
